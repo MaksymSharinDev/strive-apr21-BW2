@@ -1,15 +1,47 @@
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
+import activityList from "../../../../../data/activities.json";
+import { useState } from "react";
+import styles from "../../../../../modules/skills.module.css";
+
 const Activities = () => {
+  const [activity, setActivity] = useState(activityList.activities);
   return (
-    <>
-      <Card>
+    <Card>
+      <Container>
+        <h1>Activity</h1>
+        <a href="/">69 followers</a>
         <Row>
-          <Col>
-            <h1>Activities</h1>
-          </Col>
+          {activity.map((item) => (
+            <Col xs={6}>
+              <div key={item.id} style={{ display: "flex" }}>
+                <div>
+                  <img
+                    src={item.userPic}
+                    alt="has to be user's face"
+                    style={{
+                      borderRadius: "6rem",
+                      margin: "1rem",
+                      maxWidth: "60%",
+                    }}
+                  />
+                </div>
+                <div>
+                  <h5>{item.preview}</h5>
+                  <span>User {item.type}</span>
+                </div>
+              </div>
+            </Col>
+          ))}
+          <a
+            href="/"
+            className={styles.expander}
+            style={{ textDecoration: "none" }}
+          >
+            See all activity
+          </a>
         </Row>
-      </Card>
-    </>
+      </Container>
+    </Card>
   );
 };
 
