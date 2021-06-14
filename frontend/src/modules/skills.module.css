@@ -1,0 +1,20 @@
+:root {
+  --main-grey-color: rgba(0, 0, 0, 0.6);
+}
+.header {
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.icon {
+  height: 4rem;
+  width: 4rem;
+  min-width: auto;
+  color: var(--main-grey-color);
+}
+.newSkill {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: var(--main-grey-color);
+}
