@@ -4,14 +4,14 @@ import {useEffect, useState} from "react";
 
 const Profile = (props) =>{
     let [ loading, setLoading ] = useState( true )
-
+    /*
     useEffect(
         ()=>{
             fetch().then(r => r.json()).then(
                 (data)=>{}
             )
         },[]
-    )
+    )*/
 
     return (
         <Row>
