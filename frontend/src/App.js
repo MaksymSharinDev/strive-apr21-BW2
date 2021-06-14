@@ -1,9 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Container, Row} from "react-bootstrap";
-import MyNavbar from './components/Pages/Profile/MyNavbar'
 import Activities from "./components/Pages/Profile/Formation/FormationSection/Activities";
 import Skills from "./components/Pages/Profile/Formation/FormationSection/Skills";
 import Sidebar from './components/Pages/Profile/Sidebar/SidebarContainer/SidebarContainer.jsx'
+import MyFooter from './components/Pages/Profile/MyFooter';
+import MyNavbar from './components/Pages/Profile/MyNavbar';
+
 
 function App() {
     return (
@@ -29,6 +31,9 @@ function App() {
                         </aside>
                     </Col>
                 </Row>
+            </Container>
+            <Container fluid>
+                <MyFooter/>
             </Container>
         </div>
     );
