@@ -32,7 +32,7 @@ function App() {
                     </Col>
                 </Row>
             </Container>
-            <Container fluid>
+            <Container >
                 <MyFooter/>
             </Container>
         </div>
