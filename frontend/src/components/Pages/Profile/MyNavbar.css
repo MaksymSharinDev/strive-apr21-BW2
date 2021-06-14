@@ -3,7 +3,7 @@
     text-align: center;
     align-items: center;
     line-height: 20px;
-    padding: .5rem 0px 0px;
+    padding: .5rem 0 0;
 }
 
 .navbar img {
@@ -24,42 +24,41 @@
     background-color: #EEF3F8;
     line-height: 1.4;
     text-align: center;
-    margin: 12px 0px 10px 20px;
+    margin: 12px 0 10px 20px;
     
 }
 
 .navbar-nav div {
-    margin: 0px 7px;
+    margin: 0 7px;
    width: 80px;
 }
 .navbar-nav .nav-link {
    color: gold;
 }
 .navbar-nav .myprofile {
-    margin: 0px 7px 0px 7px;
+    margin: 0 7px 0 7px;
     padding-right: 10px;
    
 }
 
 .navbar-nav svg {
     font-size: 1.5em;
-    padding: 0%;
-    margin: 0px 10px;
+    margin: 0 10px;
     color: rgb(149, 147, 147);
-    padding-bottom: 3px;
+    padding: 0 0 3px;
     max-height: 23px;
 }
 .navbar-nav svg:hover {
     font-size: 1.5em;
-    padding: 0%;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     color: #191919;
 }
 
 .navbar-nav a {
     font-size: 0.7em;
-    padding: 0%;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar .myprofile {
