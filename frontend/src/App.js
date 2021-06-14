@@ -9,9 +9,11 @@ function App() {
   return (
     <div className="App">
         <Container fluid>
-        <Nav>
-            <MyNavbar/>
-        </Nav>
+        <nav style={{backgroundColor:'white'}}>
+            <Container>
+                <MyNavbar/>
+            </Container>
+        </nav>
         </Container>
       <Container>
         <Row>
