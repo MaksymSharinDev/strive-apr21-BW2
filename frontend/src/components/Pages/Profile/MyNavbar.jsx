@@ -9,7 +9,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 export default class MyNavbar extends Component {
     render() {
         return (
-            <Container fluid>
+
                 <Navbar expand="lg">
                     <Navbar.Brand href="#"><img src='http://pngimg.com/uploads/linkedIn/small/linkedIn_PNG16.png' alt='logo' /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -74,7 +74,7 @@ export default class MyNavbar extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-            </Container>
+
         )
     }
 }

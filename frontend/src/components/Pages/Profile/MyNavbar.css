@@ -1,21 +1,13 @@
-.container-fluid {
-    padding: 0px;
-    margin: 0px;
-    background-color: #FFFFFF;
-}
 
 .navbar {
-    margin: 0px 100px 0px 100px;
     text-align: center;
     align-items: center;
     line-height: 20px;
-    
-
+    padding: .5rem 0px 0px;
 }
 
 .navbar img {
     width: 35px;
-
 }
 
 .navbar .form-control {
