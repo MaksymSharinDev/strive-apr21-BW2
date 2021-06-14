@@ -7,7 +7,7 @@ const SidebarContainer = () =>
     (<>
         <Card  >
             <Card.Body>
-                <ProfilesCardList  itemsName={'maybeKnownPeople'} quantityToShow={5}/>
+                <ProfilesCardList  heading={'People you maybe known'} quantityToShow={5}/>
             </Card.Body>
         </Card>
 
