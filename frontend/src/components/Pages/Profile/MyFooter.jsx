@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import './MyFooter.css'
 import { Container, Row, Col, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap'
+import { BsFillQuestionSquareFill } from "react-icons/bs";
+import { IoSettingsSharp } from "react-icons/io5";
 
 export default class MyFooter extends Component {
     render() {
         return (
             <Container fluid>
                 <Row>
-                    <h1>logo</h1>
+                    <span><img src="https://logosmarken.com/wp-content/uploads/2020/04/Linkedin-Logo.png" alt="logo" /></span>
                 </Row>
                 <Row>
                     <Col>
@@ -34,26 +37,37 @@ export default class MyFooter extends Component {
                             <ListGroup.Item>Small Business</ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col>
-                        <ListGroup>
-                            <ListGroup.Item>Solutions</ListGroup.Item>
-                            <ListGroup.Item>Visit our Help Center.</ListGroup.Item>
-                        </ListGroup>
-                        <ListGroup>
-                            <ListGroup.Item>Manage your account and privacy</ListGroup.Item>
-                            <ListGroup.Item>Go to your Settings.</ListGroup.Item>
-                        </ListGroup>
+                    <Col className='mr-5'>
+                        <div className='d-flex'>
+                            <span><BsFillQuestionSquareFill /></span>
+                            <ListGroup>
+                                <ListGroup.Item>Questions?</ListGroup.Item>
+                                <ListGroup.Item>Visit our Help Center.</ListGroup.Item>
+                            </ListGroup>
+                        </div>
+                        <div className='d-flex'>
+                            <span><IoSettingsSharp /></span>
+                            <ListGroup>
+                                <ListGroup.Item>Manage your account and privacy</ListGroup.Item>
+                                <ListGroup.Item>Go to your Settings.</ListGroup.Item>
+                            </ListGroup>
+                        </div>
                     </Col>
-                    <Col>
-                        <p>Select Language</p>
-                        <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                            <Dropdown.Item href="#/action-1">English (English)</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        </DropdownButton>
+
+                    <Col className='ml-5'>
+                        <label for="cars">Select Language</label>
+
+                        <select name="Language" id="Languages">
+                            <option value="English">Elnglish (English)</option>
+                            <option value="French">French</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Deutsch">Deutsch</option>
+                        </select>
                     </Col>
                 </Row>
-                <Row></Row>
+                <Row>
+                    <p>LinkedIn Corporation © 2021</p>
+                </Row>
             </Container>
         )
     }
