@@ -6,6 +6,7 @@ import Sidebar from "./components/Pages/Profile/Sidebar/SidebarContainer/Sidebar
 import MyFooter from "./components/Pages/Profile/MyFooter";
 import MyNavbar from "./components/Pages/Profile/MyNavbar";
 import About from "./components/Pages/Profile/Formation/About";
+import ExpEduCert from "./components/ExpEduCert";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <main>
               <About />
               <Activities />
+              <ExpEduCert />
               <Skills />
             </main>
           </Col>
