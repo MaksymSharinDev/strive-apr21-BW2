@@ -4,8 +4,8 @@
 }
 
 .icon {
-  height: 4rem;
-  width: 4rem;
+  height: 40px;
+  width: 40px;
   min-width: auto;
   color: var(--main-grey-color);
 }

@@ -49,7 +49,7 @@ const About = () => {
     <>
       <Card>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <h2>About</h2>
+          <h4>About</h4>
           <IconContext.Provider value={{ className: styles.icon }}>
             <div>
               <BsPencil onClick={() => setShown(true)} />
@@ -67,7 +67,7 @@ const About = () => {
       {isShown && (
         <div className={styles.modal}>
           <div style={{ padding: "2rem" }}>
-            <h2>Edit summary</h2>
+            <h4>Edit summary</h4>
             <hr />
             <p>Description</p>
 

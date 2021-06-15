@@ -10,8 +10,11 @@ import ExpEduCert from "./components/ExpEduCert";
 
 function App() {
   return (
-    <div className="App">
-      <Container fluid>
+    <div className="App" style={{backgroundColor: 'darkcyan'}}>
+      <style>
+        {'main .card{padding: 25px;}\n'}
+      </style>
+      <Container fluid className={'p-0'}>
         <nav style={{ backgroundColor: "white", borderBottom: "gray" }}>
           <Container>
             <MyNavbar />
@@ -35,9 +38,11 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Container>
-        <MyFooter />
-      </Container>
+
+        <Container fluid style={{backgroundColor: 'white', padding: '5px',marginTop: '10px'}}>
+            <MyFooter />
+
+        </Container>
     </div>
   );
 }

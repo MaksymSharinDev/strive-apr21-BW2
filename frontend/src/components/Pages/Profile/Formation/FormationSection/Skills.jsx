@@ -14,7 +14,7 @@ const Skills = () => {
       <Card>
         <div className={styles.container}>
           <div className={styles.innerContainer}>
-            <h2 className={styles.header}>Skills & endorsements</h2>
+            <h4 className={styles.header}>Skills & endorsements</h4>
             <div className={styles.buttons}>
               <p className={styles.newSkill}>Add a new skill</p>
               <IconContext.Provider value={{ className: styles.icon }}>
@@ -33,11 +33,11 @@ const Skills = () => {
             {skills.endorsements.map((item) =>
               item.passed ? (
                 <div key={item.name}>
-                  <h2>{item.name}</h2> <div className={styles.divider}></div>
+                  <h6>{item.name}</h6> <div className={styles.divider}></div>
                 </div>
               ) : (
                 <div key={item.name}>
-                  <h2>{item.name}</h2>
+                  <h6>{item.name}</h6>
                   <p>You don’t have any endorsements for this skill yet</p>
                   <GrCompliance />
                   <a href="/" className={styles.anchor}>
@@ -48,7 +48,7 @@ const Skills = () => {
               )
             )}
             {skills.mainSkills.map((item) => (
-              <h4 key={item}>{item}</h4>
+              <h6 key={item}>{item}</h6>
             ))}
           </div>
           <div>{expanded && <SkillListComponent skills={skills} />}</div>

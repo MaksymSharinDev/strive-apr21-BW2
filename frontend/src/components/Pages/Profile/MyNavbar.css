@@ -3,11 +3,11 @@
     text-align: center;
     align-items: center;
     line-height: 20px;
-    padding: .5rem 0 0;
+    padding: 1.5rem 0 1.5rem 0;
 }
 
 .navbar img {
-    width: 35px;
+    width: 50px;
 }
 
 .navbar .form-control {
@@ -71,3 +71,5 @@
     width: 1.4em;
    border-radius: 50%;
 }
+
+

@@ -26,6 +26,7 @@ export default class MyNavbar extends Component {
                             </Form>
                         </div>
                         <Nav
+                            id={'navIconsMenu'}
                             className="ml-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll

@@ -1,7 +1,7 @@
 const AboutModal = ({ bio }) => {
   return (
     <>
-      <h2>{bio}</h2>
+      <h4>{bio}</h4>
     </>
   );
 };
