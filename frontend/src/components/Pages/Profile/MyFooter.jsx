@@ -7,9 +7,11 @@ import { IoSettingsSharp } from "react-icons/io5";
 export default class MyFooter extends Component {
     render() {
         return (
-            <Container fluid>
+            <footer >
+
+            <Container  >
                 <Row>
-                    <span><img src="https://logosmarken.com/wp-content/uploads/2020/04/Linkedin-Logo.png" alt="logo" /></span>
+                    <span><img style={{height: '75px'}} src="https://logosmarken.com/wp-content/uploads/2020/04/Linkedin-Logo.png" alt="logo" /></span>
                 </Row>
                 <Row className='d-flex'>
                     <Col className='col-10 d-flex'>
@@ -40,14 +42,14 @@ export default class MyFooter extends Component {
                         </Col>
                         <Col className='mr-5 '>
                             <div className='d-flex questions'>
-                                <span><BsFillQuestionSquareFill /></span>
+                                <span style={{padding: '5px'}}><BsFillQuestionSquareFill /></span>
                                 <ListGroup>
                                     <ListGroup.Item>Questions?</ListGroup.Item>
                                     <ListGroup.Item>Visit our Help Center.</ListGroup.Item>
                                 </ListGroup>
                             </div>
                             <div className='d-flex settings'>
-                                <span><IoSettingsSharp /></span>
+                                <span style={{padding: '5px'}}><IoSettingsSharp /></span>
                                 <ListGroup>
                                     <ListGroup.Item>Manage your account and privacy</ListGroup.Item>
                                     <ListGroup.Item>Go to your Settings.</ListGroup.Item>
@@ -56,7 +58,7 @@ export default class MyFooter extends Component {
                         </Col>
                     </Col>
 
-                    <Col className='col-2 ml-5 languages'>
+                    <Col className='col-2 languages'>
                         <label for="Language">Select Language</label>
 
                         <select name="Language" id="Languages">
@@ -67,10 +69,11 @@ export default class MyFooter extends Component {
                         </select>
                     </Col>
                 </Row>
-                <Row>
+                <Row className={'mt-2'}>
                     <p>LinkedIn Corporation © 2021</p>
                 </Row>
             </Container>
+            </footer>
         )
     }
 }

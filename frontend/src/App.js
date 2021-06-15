@@ -33,9 +33,11 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Container>
-        <MyFooter />
-      </Container>
+
+        <Container fluid style={{backgroundColor: 'white', padding: '5px',marginTop: '10px'}}>
+            <MyFooter />
+
+        </Container>
     </div>
   );
 }
