@@ -4,9 +4,7 @@ const LearningListCard = ()=>
     <Card >
         <Card.Body>
             <Card.Text>
-                LEARNING
-                Add new skills free for 24 hours
-
+               <h4> learn a new skills free for 24 hours</h4>
             </Card.Text>
         </Card.Body>
 
