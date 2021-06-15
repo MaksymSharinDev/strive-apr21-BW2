@@ -1,0 +1,11 @@
+.icon:hover {
+  cursor: pointer;
+  background-color: var(--hover-hl);
+}
+
+.icon {
+  height: 4rem;
+  width: 4rem;
+  min-width: auto;
+  color: var(--main-grey-color);
+}
