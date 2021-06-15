@@ -29,7 +29,7 @@ const ProfilesListCard = (props) => {
         }, [])
     return (
         <>
-            <h4 className={'mb-4'}>
+            <h4 className={'mb-3'}>
                 {props.heading}
             </h4>
             {
@@ -37,7 +37,7 @@ const ProfilesListCard = (props) => {
                     let arr = []
                     for (let I = 0; I < n; I++) {
                         arr.push(
-                            <Card className={'mb-4'}>
+                            <Card className={'mb-3'}>
                                 <Card.Body>
                                     {profiles && <Profile id={profiles[I]._id}/>}
                                 </Card.Body>
@@ -89,14 +89,14 @@ const Profile = (props) => {
                 {
                     profileData
                         ? <div style={{
-                            height: '115px',
+                            height: '75px',
                             overflow: 'hidden',
                         }}>
                             <h5> {profileData.name + ' ' + profileData.surname}</h5>
                             <h6> {profileData.title}</h6>
-                            <p> {profileData.bio}</p>
+                            {/*  <p> {profileData.bio}</p> */}
                         </div>
-                        : <p style={{backgroundColor: 'gray', height: '100px'}}/>
+                        : <p style={{backgroundColor: 'gray', height: '75px'}}/>
                 }
 
 

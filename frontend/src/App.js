@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './components/Pages/Profile/profile.css'
 import {Col, Container, Row} from "react-bootstrap";
 import Activities from "./components/Pages/Profile/Formation/FormationSection/Activities";
 import Skills from "./components/Pages/Profile/Formation/FormationSection/Skills";
