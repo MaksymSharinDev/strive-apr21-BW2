@@ -62,7 +62,7 @@ export default class MyFooter extends Component {
                         <label for="Language">Select Language</label>
 
                         <select name="Language" id="Languages">
-                            <option value="English">Elnglish (English)</option>
+                            <option value="English">English (English)</option>
                             <option value="French">French</option>
                             <option value="Italian">Italian</option>
                             <option value="Deutsch">Deutsch</option>

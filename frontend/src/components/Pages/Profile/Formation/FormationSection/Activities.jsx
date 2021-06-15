@@ -8,7 +8,7 @@ const Activities = () => {
     return (
         <Card>
             <Container>
-                <h1>Activity</h1>
+                <h4>Activity</h4>
                 <a href="/">69 followers</a>
                 <Row>
                     {activity.map((item) => (

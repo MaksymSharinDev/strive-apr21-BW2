@@ -9,8 +9,11 @@ import About from "./components/Pages/Profile/Formation/About";
 
 function App() {
   return (
-    <div className="App">
-      <Container fluid>
+    <div className="App" style={{backgroundColor: 'darkcyan'}}>
+      <style>
+        {'main .card{padding: 25px;}\n'}
+      </style>
+      <Container fluid className={'p-0'}>
         <nav style={{ backgroundColor: "white", borderBottom: "gray" }}>
           <Container>
             <MyNavbar />
