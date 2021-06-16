@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import AboutModal from "./AboutModal";
 import { BiOutline } from "react-icons/bi";
 const About = () => {
-  const [bio, setBio] = useState(null);
+  const [bio, setBio] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [isShown, setShown] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
