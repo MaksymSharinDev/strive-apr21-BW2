@@ -17,8 +17,6 @@ import Feed from "./components/Pages/Feed/Feed";
 import Sidebar from "./components/Pages/Profile/Sidebar/SidebarContainer/SidebarContainer";
 import MyFooter from "./components/Pages/Profile/MyFooter";
 
-
-
 function App() {
     return (
         <div className="App" style={{backgroundColor: 'darkcyan'}}>

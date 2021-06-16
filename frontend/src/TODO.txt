@@ -1,0 +1,8 @@
+
+TODO pages Path ./src/Pages
+TODO MyFooter,MyNavbar must be renamed and moved from ./src/Pages/Profile/ to ./src/Components/
+TODO ExpEduCert is expected to be in src/Pages/Profile folder because is not expected to be share across pages
+TODO ExpEduCert not semantic name and ExpEduCert must be all in same folder
+TODO modules can be put along jsx file where is use for make import syntax like ./file.module.css ?
+TODO: Unify for Consistency reasons the mixed use of \
+      style={{rule: 'string'}}, className={'boostrap-class'} , file.module.css
