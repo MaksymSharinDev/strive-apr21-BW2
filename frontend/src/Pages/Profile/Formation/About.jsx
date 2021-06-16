@@ -60,8 +60,6 @@ const About = () => {
         <div>
           {isLoading ? (
             <Spinner animation="border" role="status" />
-          ) : bio.length === 0 ? (
-            <p>No bio to display</p>
           ) : (
             <p>{bio}</p>
           )}
