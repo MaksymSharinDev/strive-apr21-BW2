@@ -9,6 +9,7 @@ const About = () => {
   const [bio, setBio] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [isShown, setShown] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
   //   const [input, setInput] = useState(bio);
   useEffect(() => {
     setBio("");
@@ -59,6 +60,8 @@ const About = () => {
         <div>
           {isLoading ? (
             <Spinner animation="border" role="status" />
+          ) : bio.length === 0 ? (
+            <p>No bio to display</p>
           ) : (
             <p>{bio}</p>
           )}
