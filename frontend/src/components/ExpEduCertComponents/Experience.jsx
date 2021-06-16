@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Spinner, Form, Button } from "react-bootstrap";
 import styles from "../../modules/exp.module.css";
+import SingleJob from "./ExperienceSingleJob";
 const Experience = () => {
   const [exp, setExp] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [isShown, setShown] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
   const [job, setJob] = useState({
     role: "",
     company: "",
@@ -74,18 +76,38 @@ const Experience = () => {
           <Spinner animation="border" role="status" />
         ) : exp.length === 0 ? (
           <p>There's no experience to display</p>
+        ) : exp.length >= 5 && !isExpanded ? (
+          <>
+            {exp.slice(0, 5).map((job) => (
+              <div key={job._id}>
+                <SingleJob job={job} />
+              </div>
+            ))}
+            <p onClick={() => setExpanded(true)}>
+              {isExpanded ? "Show Less" : "Show more"}
+            </p>
+          </>
+        ) : exp.length >= 5 && isExpanded ? (
+          <>
+            {exp.map((job) => (
+              <div key={job._id}>
+                <SingleJob job={job} />
+              </div>
+            ))}
+            <p onClick={() => setExpanded(false)}>
+              {isExpanded ? "Show Less" : "Show more"}
+            </p>
+          </>
+        ) : exp.length < 5 ? (
+          <>
+            {exp.map((job) => (
+              <div key={job._id}>
+                <SingleJob job={job} />
+              </div>
+            ))}
+          </>
         ) : (
-          exp.map((job) => (
-            <div key={job._id}>
-              <p>Role: {job.role}</p>
-              <p>Company: {job.company}</p>
-              <p>Description: {job.description}</p>
-              <p>Start Date: {job.startDate}</p>
-              <p>End date: {job.endDate}</p>
-              <p>Area: {job.area}</p>
-              <hr />
-            </div>
-          ))
+          ""
         )}
       </div>
       {isShown && (
