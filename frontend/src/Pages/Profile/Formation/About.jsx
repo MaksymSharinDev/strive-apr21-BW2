@@ -1,7 +1,7 @@
 import { Card, Spinner, Button, Form } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BsPencil } from "react-icons/bs";
-import styles from "../../../../modules/about.module.css";
+import styles from "../../../modules/about.module.css";
 import { useState, useEffect } from "react";
 import AboutModal from "./AboutModal";
 import { BiOutline } from "react-icons/bi";

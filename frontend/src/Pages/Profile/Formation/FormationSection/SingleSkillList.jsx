@@ -1,4 +1,4 @@
-import styles from "../../../../../modules/skills.module.css";
+import styles from "../../../../modules/skills.module.css";
 const SingleSkillList = ({ skills, title }) => {
   return (
     <>

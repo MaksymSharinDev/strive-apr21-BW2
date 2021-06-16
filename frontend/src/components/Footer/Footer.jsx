@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './MyFooter.css'
+import './Footer.css'
 import { Container, Row, Col, ListGroup, DropdownButton, Dropdown } from 'react-bootstrap'
 import { BsFillQuestionSquareFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
 
-export default class MyFooter extends Component {
+export default class Footer extends Component {
     render() {
         return (
             <footer >

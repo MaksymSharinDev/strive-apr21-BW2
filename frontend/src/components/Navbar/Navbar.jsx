@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import './MyNavbar.css'
-import { Container, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap'
+import './Navbar.css'
+import { Container, Navbar as BNavbar , Nav, NavDropdown, Form, FormControl } from 'react-bootstrap'
 import { FaUserFriends } from "react-icons/fa";
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { BsFillBriefcaseFill, BsFillBellFill, BsFillGrid3X3GapFill, } from "react-icons/bs";
 import { BiSearchAlt2 } from "react-icons/bi";
 
-export default class MyNavbar extends Component {
+export default class Navbar extends Component {
     render() {
         return (
 
-                <Navbar expand="lg">
-                    <Navbar.Brand href="#"><img src='http://pngimg.com/uploads/linkedIn/small/linkedIn_PNG16.png' alt='logo' /></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll">
+                <BNavbar expand="lg">
+                    <BNavbar.Brand href="#"><img src='http://pngimg.com/uploads/linkedIn/small/linkedIn_PNG16.png' alt='logo' /></BNavbar.Brand>
+                    <BNavbar.Toggle aria-controls="navbarScroll" />
+                    <BNavbar.Collapse id="navbarScroll">
                         <div className='searchbar'>
                             <BiSearchAlt2/>
                             <Form className="d-flex">
@@ -73,8 +73,8 @@ export default class MyNavbar extends Component {
                                 Retry Premium <br/>Free
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+                    </BNavbar.Collapse>
+                </BNavbar>
 
         )
     }

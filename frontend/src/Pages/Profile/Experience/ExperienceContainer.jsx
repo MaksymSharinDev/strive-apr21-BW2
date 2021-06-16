@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
-import Experience from "./ExpEduCertComponents/Experience";
-const ExpEduCert = () => {
+import Experience from "./Experience";
+const ExperienceContainer = () => {
   return (
     <>
       <Card>
@@ -14,4 +14,4 @@ const ExpEduCert = () => {
   );
 };
 
-export default ExpEduCert;
+export default ExperienceContainer;

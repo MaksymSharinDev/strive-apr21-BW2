@@ -10,12 +10,12 @@ import './App.css'
 
 import {Col, Container, Row} from "react-bootstrap";
 
-import MyNavbar from "./components/Pages/Profile/MyNavbar";
-import Profile from './components/Pages/Profile/Profile.jsx'
-import Feed from "./components/Pages/Feed/Feed";
+import Navbar from "./components/Navbar/Navbar";
+import Profile from './Pages/Profile/Profile.jsx'
+import Feed from "./Pages/Feed/Feed";
 
-import Sidebar from "./components/Pages/Profile/Sidebar/SidebarContainer/SidebarContainer";
-import MyFooter from "./components/Pages/Profile/MyFooter";
+import Sidebar from "./Pages/Profile/Sidebar/SidebarContainer/SidebarContainer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
     return (
@@ -25,7 +25,7 @@ function App() {
                 <Container fluid className={'p-0'}>
                     <nav style={{backgroundColor: "white", borderBottom: "gray"}}>
                         <Container>
-                            <MyNavbar/>
+                            <Navbar/>
                         </Container>
                     </nav>
                 </Container>
@@ -54,7 +54,7 @@ function App() {
                     </Row>
                 </Container>
                 <Container fluid style={{backgroundColor: 'white', padding: '5px', marginTop: '10px'}}>
-                    <MyFooter/>
+                    <Footer/>
                 </Container>
             </Router>
         </div>
