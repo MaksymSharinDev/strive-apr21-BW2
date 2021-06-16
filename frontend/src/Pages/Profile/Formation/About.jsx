@@ -60,8 +60,22 @@ const About = () => {
         <div>
           {isLoading ? (
             <Spinner animation="border" role="status" />
-          ) : (
+          ) : bio.length === 0 ? (
+            <p>No bio to display</p>
+          ) : bio.length > 150 && !isExpanded ?  (
+            <>
+              <p>{bio.slice(0, 150)}</p>
+              <p
+                style={{ textAlign: "right" }}
+                onClick={() => setExpanded(true)}
+              >
+                ...show more
+              </p>
+            </>
+          ) : bio.length > 150 && isExpanded ? (
             <p>{bio}</p>
+          ) : (
+            ""
           )}
         </div>
       </Card>
