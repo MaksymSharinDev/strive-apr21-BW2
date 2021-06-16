@@ -1,11 +1,12 @@
 import {useState, useEffect} from "react";
 import {Spinner, Form, Button} from "react-bootstrap";
 import styles from "../../../modules/exp.module.css";
-
+import SingleJob from "./ExperienceSingleJob"
 const Experience = () => {
     const [exp, setExp] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [isShown, setShown] = useState(false);
+    const [isExpanded, setExpanded] = useState(false);
     const [job, setJob] = useState({
         role: "",
         company: "",
@@ -77,7 +78,7 @@ const Experience = () => {
                     else if (exp.length === 0)
                         return (<p>There's no experience to display</p>)
                     else
-                        return (exp.map((job) => (
+                        return (exp.slice(0, 5).map((job) => (
                                 <div key={job._id}>
                                     <p>Role: {job.role}</p>
                                     <p>Company: {job.company}</p>
