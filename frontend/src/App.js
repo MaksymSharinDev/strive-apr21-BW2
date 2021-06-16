@@ -34,10 +34,8 @@ function App() {
                         <Col xs={8}>
                             <main>
                                 <Switch>
-                                    <Route path="/">
-                                        <Profile/>
-                                    </Route>
-                                    <Route path="/profile">
+
+                                    <Route exact path="/">
                                         <Profile/>
                                     </Route>
                                     <Route path="/feed">

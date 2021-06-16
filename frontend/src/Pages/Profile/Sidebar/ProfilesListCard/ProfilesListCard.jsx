@@ -19,7 +19,6 @@ const ProfilesListCard = (props) => {
                 .then(r => r.json())
                 .then((data) => {
                     let tmpArr = [];
-                    console.log(data)
                     for (let I = 0; I < props.quantityToShow; I++) {
                         let randomIndex = Math.floor(Math.random() * data.length);
                         tmpArr.push(data[randomIndex])

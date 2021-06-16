@@ -33,7 +33,7 @@ export default class Navbar extends Component {
                         >   
                             <div>
                                 <AiFillHome/>
-                                <Nav.Link href="#action1">Home</Nav.Link>
+                                <Nav.Link href="/feed">Home</Nav.Link>
                             </div>
                             <div>
                                 <FaUserFriends/>
@@ -52,7 +52,9 @@ export default class Navbar extends Component {
                                 <Nav.Link href="#action4">Notifications</Nav.Link>
                             </div>
                             <div className='myprofile'>
-                                <img src='https://picsum.photos/200' alt='profile'/>
+                                <a href={'/'}>
+                                    <img  src='https://picsum.photos/200' alt='profile'/>
+                                </a>
                                 <NavDropdown title="Me" id="navbarScrollingDropdown">
                                     <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                                     <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
