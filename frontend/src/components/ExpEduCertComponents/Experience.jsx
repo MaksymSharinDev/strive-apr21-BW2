@@ -75,7 +75,17 @@ const Experience = () => {
         ) : exp.length === 0 ? (
           <p>There's no experience to display</p>
         ) : (
-          exp.map((job) => <p>{job.role}</p>)
+          exp.map((job) => (
+            <div key={job._id}>
+              <p>Role: {job.role}</p>
+              <p>Company: {job.company}</p>
+              <p>Description: {job.description}</p>
+              <p>Start Date: {job.startDate}</p>
+              <p>End date: {job.endDate}</p>
+              <p>Area: {job.area}</p>
+              <hr />
+            </div>
+          ))
         )}
       </div>
       {isShown && (
@@ -104,6 +114,7 @@ const Experience = () => {
             <Form.Control
               id="startDate"
               as="input"
+              type="date"
               value={job.startDate}
               onChange={(e) => handleChange(e)}
             />
@@ -111,6 +122,7 @@ const Experience = () => {
             <p>End date</p>
             <Form.Control
               id="endDate"
+              type="date"
               as="input"
               value={job.endDate}
               onChange={(e) => handleChange(e)}
