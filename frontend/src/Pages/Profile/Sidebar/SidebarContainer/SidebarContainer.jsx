@@ -2,7 +2,7 @@
 import {Card} from "react-bootstrap";
 
 import SettingsCard from '../SettingsCard/SettingsCard.jsx'
-import AdCard from '../AdCard/AdCard .jsx'
+import AdCard from '../../../../components/AdCard/AdCard .jsx'
 import ProfilesListCard from '../ProfilesListCard/ProfilesListCard.jsx'
 import LearningListCard from '../LearningListCard/LearningListCard.jsx'
 const SidebarContainer = () =>

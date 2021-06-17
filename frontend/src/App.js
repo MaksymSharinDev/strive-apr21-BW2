@@ -15,6 +15,7 @@ import Profile from './Pages/Profile/Profile.jsx'
 import Feed from "./Pages/Feed/Feed";
 
 import Sidebar from "./Pages/Profile/Sidebar/SidebarContainer/SidebarContainer";
+import FeedRightSidebar from "./Pages/Feed/FeedRightSidebar/FeedRightSidebarContainer";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -45,7 +46,15 @@ function App() {
                         </Col>
                         <Col xs={4}>
                             <aside>
-                                <Sidebar/>
+                                <Switch>
+                                    <Route exact path="/">
+                                        <Sidebar/>
+                                    </Route>
+                                    <Route path="/feed">
+                                        <FeedRightSidebar/>
+                                    </Route>
+                                </Switch>
+
                             </aside>
                         </Col>
                     </Row>
