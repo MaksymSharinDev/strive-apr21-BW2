@@ -52,6 +52,7 @@ const SingleJob = ({ job }) => {
           <p>Start Date: {job.startDate}</p>
           <p>End date: {job.endDate}</p>
           <p>Area: {job.area}</p>
+          <img src={job.image} alt="job" style={{ maxWidth: "20%" }} />
         </div>
         <div>
           <p className={styles.edit} onClick={() => setShown(true)}>

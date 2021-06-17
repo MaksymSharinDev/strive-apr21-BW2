@@ -7,6 +7,8 @@ const Experience = () => {
   const [isLoading, setLoading] = useState(false);
   const [isShown, setShown] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  // const [expID, setExpID] = useState("");
   const [job, setJob] = useState({
     role: "",
     company: "",
@@ -41,7 +43,7 @@ const Experience = () => {
   };
 
   const handleSubmit = async () => {
-    await fetch(
+    let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/profile/60c71dfc291930001560ab9a/experiences",
       {
         method: "POST",
@@ -53,7 +55,23 @@ const Experience = () => {
         body: JSON.stringify(job),
       }
     );
+    let data = await response.json();
+    let expID = data._id;
     setShown(false);
+    const formData = new FormData();
+    formData.append("experience", selectedFile);
+    await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/60c71dfc291930001560ab9a/experiences/${expID}/picture`,
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+          // "Content-type": "api/uploadfile",
+        },
+        body: formData,
+      }
+    );
   };
 
   const handleChange = (e) => {
@@ -61,6 +79,13 @@ const Experience = () => {
     console.log(e.target.value);
     let id = e.target.id;
     setJob({ ...job, [id]: e.target.value });
+  };
+
+  const test = async () => {
+    console.log(selectedFile);
+  };
+  const fileChange = async (e) => {
+    setSelectedFile(e.target.files[0]);
   };
   return (
     <>
@@ -168,6 +193,9 @@ const Experience = () => {
               value={job.area}
               onChange={(e) => handleChange(e)}
             />
+            <p>Image</p>
+            <input type="file" onChange={(e) => fileChange(e)} />
+            <button onClick={() => test()}>test</button>
 
             <Button variant="success" onClick={() => handleSubmit()}>
               Save
