@@ -8,7 +8,6 @@ const Experience = () => {
   const [isShown, setShown] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-  // const [expID, setExpID] = useState("");
   const [job, setJob] = useState({
     role: "",
     company: "",
@@ -195,7 +194,6 @@ const Experience = () => {
             />
             <p>Image</p>
             <input type="file" onChange={(e) => fileChange(e)} />
-            <button onClick={() => test()}>test</button>
 
             <Button variant="success" onClick={() => handleSubmit()}>
               Save
