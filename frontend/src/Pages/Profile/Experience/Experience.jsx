@@ -115,7 +115,7 @@ const Experience = () => {
           <div style={{ padding: "2rem" }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h2>Add new experience</h2>
-              <h2>Close</h2>
+              <h2 onClick={() => setShown(false)}>Close</h2>
             </div>
             <hr />
 
