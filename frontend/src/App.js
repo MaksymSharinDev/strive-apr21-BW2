@@ -34,7 +34,6 @@ function App() {
                         <Col xs={8}>
                             <main>
                                 <Switch>
-
                                     <Route exact path="/">
                                         <Profile/>
                                     </Route>

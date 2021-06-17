@@ -6,7 +6,6 @@ const Feed = () => {
     return (
         <Row>
             <Col xs={4}>
-
             </Col>
             <Col xs={8}>
                 <Row>

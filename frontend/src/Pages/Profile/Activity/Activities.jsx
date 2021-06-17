@@ -1,10 +1,10 @@
 import {Card, Row, Col, Container} from "react-bootstrap";
-import activityList from "../../../../data/activities.json";
+import activityList from "../../../data/activities.json";
 import {useState} from "react";
-import styles from "../../../../modules/skills.module.css";
+import styles from "../../../modules/skills.module.css";
 
 const Activities = () => {
-    const [activity, setActivity] = useState(activityList.activities);
+    const [activity, setActivity] = useState( activityList.activities );
     return (
         <Card>
             <Container>

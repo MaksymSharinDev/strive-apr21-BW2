@@ -1,6 +1,6 @@
 import { Button, Card } from "react-bootstrap";
-import styles from "../../../../modules/skills.module.css";
-import skillList from "../../../../data/skills.json";
+import styles from "../../../modules/skills.module.css";
+import skillList from "../../../data/skills.json";
 import SkillListComponent from "./SkillListComponent";
 import { IconContext } from "react-icons";
 import { BsPencil } from "react-icons/bs";

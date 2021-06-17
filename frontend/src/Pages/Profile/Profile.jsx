@@ -1,7 +1,7 @@
 
-import Activities from "./Formation/FormationSection/Activities";
-import Skills from "./Formation/FormationSection/Skills";
-import About from "./Formation/About";
+import Activities from "./Activity/Activities";
+import Skills from "./Skills/Skills";
+import About from "./About/About";
 import ExperienceContainer from "./Experience/ExperienceContainer";
 
 

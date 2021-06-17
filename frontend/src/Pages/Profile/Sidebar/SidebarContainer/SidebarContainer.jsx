@@ -1,4 +1,4 @@
-import './SidebarContainer.css'
+
 import {Card} from "react-bootstrap";
 
 import SettingsCard from '../SettingsCard/SettingsCard.jsx'
