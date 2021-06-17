@@ -113,7 +113,10 @@ const Experience = () => {
       {isShown && (
         <div className={styles.modal}>
           <div style={{ padding: "2rem" }}>
-            <h2>Add new experience</h2>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h2>Add new experience</h2>
+              <h2>Close</h2>
+            </div>
             <hr />
 
             <p>Role</p>
