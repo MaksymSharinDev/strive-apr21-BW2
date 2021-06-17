@@ -70,6 +70,9 @@ const Experience = () => {
         body: formData,
       }
     );
+    setTimeout(function () {
+      window.location.reload();
+    }, 2000);
   };
 
   const handleChange = (e) => {
