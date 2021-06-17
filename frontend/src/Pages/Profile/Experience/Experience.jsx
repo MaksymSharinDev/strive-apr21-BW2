@@ -38,7 +38,6 @@ const Experience = () => {
 
   const handleAdd = async () => {
     setShown(true);
-    console.log("gotta add new experience");
   };
 
   const handleSubmit = async () => {
@@ -74,15 +73,10 @@ const Experience = () => {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.id);
-    console.log(e.target.value);
     let id = e.target.id;
     setJob({ ...job, [id]: e.target.value });
   };
 
-  const test = async () => {
-    console.log(selectedFile);
-  };
   const fileChange = async (e) => {
     setSelectedFile(e.target.files[0]);
   };
