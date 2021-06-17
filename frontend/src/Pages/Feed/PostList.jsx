@@ -25,12 +25,7 @@ const PostList = (props) => {
     })
       .then((r) => r.json())
       .then((data) => {
-        let tmpArr = [];
-        for (let I = 0; I < props.quantityToShow; I++) {
-          let randomIndex = Math.floor(Math.random() * data.length);
-          tmpArr.push(data[randomIndex]);
-        }
-        setPostData(tmpArr);
+        setPostData(data.slice(-10).reverse());
       });
   }, []);
 
