@@ -1,5 +1,13 @@
 .edit:hover {
   cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.336);
+}
+
+.edit {
+  border: 1px solid black;
+  border-radius: 2rem;
+  display: inline;
+  padding: 0.3rem 1rem;
 }
 
 .modal {
