@@ -53,6 +53,7 @@ const SinglePost = ({ post }) => {
     }, 2000); // i hope 2 sec will be enoughh to finish upload hehe
     // window.location.reload();
   };
+
   const handleDelete = async () => {
     await fetch(
       `https://striveschool-api.herokuapp.com/api/posts/${post._id}`,
