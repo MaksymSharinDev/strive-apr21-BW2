@@ -1,9 +1,10 @@
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button, Form, Spinner } from "react-bootstrap";
 import { useState } from "react";
 
 const PostEditor = () => {
   const [individualPost, setIndividualPost] = useState({});
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isUploading, setUploading] = useState(false);
   const handleChange = (e) => {
     let id = e.target.id;
     setIndividualPost({ ...individualPost, [id]: e.target.value });
@@ -30,6 +31,7 @@ const PostEditor = () => {
 
     const formData = new FormData();
     formData.append("post", selectedFile);
+    setUploading(true);
     if (selectedFile !== null) {
       await fetch(
         `https://striveschool-api.herokuapp.com/api/posts/${postID}`,
@@ -73,6 +75,14 @@ const PostEditor = () => {
             <Button variant="success" onClick={() => handleSubmit()}>
               Save
             </Button>
+            {isUploading && (
+              <>
+                <div style={{ display: "flex" }}>
+                  <Spinner animation="border" role="status" />
+                  <h3>Uploading... </h3>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </Card.Body>

@@ -5,6 +5,7 @@ import SingleJob from "./ExperienceSingleJob";
 const Experience = () => {
   const [exp, setExp] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [isUploading, setUploading] = useState(false);
   const [isShown, setShown] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -55,7 +56,7 @@ const Experience = () => {
     );
     let data = await response.json();
     let expID = data._id;
-    setShown(false);
+    setUploading(true);
     const formData = new FormData();
     formData.append("experience", selectedFile);
     await fetch(
@@ -195,6 +196,14 @@ const Experience = () => {
             <Button variant="success" onClick={() => handleSubmit()}>
               Save
             </Button>
+            {isUploading && (
+              <>
+                <div style={{ display: "flex" }}>
+                  <Spinner animation="border" role="status" />
+                  <h3>Uploading... </h3>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

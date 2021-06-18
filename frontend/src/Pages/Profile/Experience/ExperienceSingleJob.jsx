@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import styles from "../../../modules/singlejob.module.css";
 const SingleJob = ({ job }) => {
   const [isShown, setShown] = useState(false);
   const [exp, setExp] = useState(job);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isUploading, setUploading] = useState(false);
 
   const handleChange = (e) => {
     let id = e.target.id;
@@ -26,7 +27,7 @@ const SingleJob = ({ job }) => {
     );
     let data = await response.json();
     let expID = data._id;
-    setShown(false);
+    setUploading(true);
     const formData = new FormData();
     formData.append("experience", selectedFile);
     if (selectedFile !== null) {
@@ -43,7 +44,7 @@ const SingleJob = ({ job }) => {
         }
       );
     }
-    setShown(false);
+
     setTimeout(function () {
       window.location.reload();
     }, 2000); // i hope 2 sec will be enoughh to finish upload hehe
@@ -155,6 +156,14 @@ const SingleJob = ({ job }) => {
               <Button variant="success" onClick={() => handleSubmit()}>
                 Save
               </Button>
+              {isUploading && (
+                <>
+                  <div style={{ display: "flex" }}>
+                    <Spinner animation="border" role="status" />
+                    <h3>Uploading... </h3>
+                  </div>
+                </>
+              )}
               <Button variant="danger" onClick={() => handleDelete()}>
                 Delete
               </Button>
