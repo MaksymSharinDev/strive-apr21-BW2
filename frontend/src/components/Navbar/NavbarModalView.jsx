@@ -28,12 +28,13 @@ const NavbarModalView = () => {
           }
         );
       }
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
     };
     response();
 
-    setTimeout(function () {
-      window.location.reload();
-    }, 2000); // i hope 2 sec will be enoughh to finish upload hehe
+    // i hope 2 sec will be enoughh to finish upload hehe
     // window.location.reload();
   };
 
