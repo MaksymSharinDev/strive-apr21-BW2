@@ -59,18 +59,20 @@ const Experience = () => {
     setUploading(true);
     const formData = new FormData();
     formData.append("experience", selectedFile);
-    await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/60c71dfc291930001560ab9a/experiences/${expID}/picture`,
-      {
-        method: "POST",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
-          // "Content-type": "api/uploadfile",
-        },
-        body: formData,
-      }
-    );
+    if (selectedFile !== null) {
+      await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/60c71dfc291930001560ab9a/experiences/${expID}/picture`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+            // "Content-type": "api/uploadfile",
+          },
+          body: formData,
+        }
+      );
+    }
     setTimeout(function () {
       window.location.reload();
     }, 2000);
