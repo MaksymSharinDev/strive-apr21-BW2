@@ -39,23 +39,23 @@ const NavbarModalView = () => {
   };
 
   return (
-    <div className={styles.modal}>
-      <h3>Select your new profile picture</h3>
-      <input type="file" onChange={(e) => fileChange(e)} />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button variant="success" onClick={() => handleSubmit()}>
-          Save
-        </Button>
-      </div>
-      {isUploading && (
-        <>
+    <>
+      <div className={styles.modal}>
+        <h3>Select your new profile picture</h3>
+        <input type="file" onChange={(e) => fileChange(e)} />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button variant="success" onClick={() => handleSubmit()}>
+            Save
+          </Button>
+        </div>
+        {isUploading && (
           <div style={{ display: "flex" }}>
             <Spinner animation="border" role="status" />
             <h3>Uploading... </h3>
           </div>
-        </>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
