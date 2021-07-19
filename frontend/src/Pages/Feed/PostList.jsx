@@ -15,16 +15,17 @@ const PostList = (props) => {
   ]);
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts`, {
       method: "GET",
       headers: {
-        "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+        // "Content-type": "application/json",
+        // Authorization:
+        //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
       },
     })
       .then((r) => r.json())
       .then((data) => {
+        console.log(data);
         setPostData(data.slice(-10).reverse());
       });
   }, []);
