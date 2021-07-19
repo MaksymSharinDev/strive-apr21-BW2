@@ -71,7 +71,7 @@ const SinglePost = ({ post }) => {
   return (
     <>
       <div>
-        {post?.user?._id === "60c71dfc291930001560ab9a" && (
+        {post?.user?._id === "5d84937322b7b54d848eb41b" && (
           <p className={styles.edit} onClick={() => setShown(true)}>
             EDIT
           </p>
@@ -92,7 +92,7 @@ const SinglePost = ({ post }) => {
         </p>
       </Row>
       <Row>
-        {post.image && (
+        {post.image.startsWith("https://") && (
           <img src={post.image} alt="post" style={{ maxWidth: "40%" }} />
         )}
       </Row>
