@@ -6,6 +6,7 @@ const SinglePost = ({ post }) => {
   const [isShown, setShown] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState(null);
 
   const handleChange = (e) => {
     let id = e.target.id;
@@ -16,52 +17,52 @@ const SinglePost = ({ post }) => {
   };
 
   const handleSubmit = async () => {
-    let response = await fetch(
-      `https://striveschool-api.herokuapp.com/api/posts/${post._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
-        },
-        body: JSON.stringify(individualPost),
-      }
-    );
-    let data = await response.json();
-    let postID = data._id;
     setUploading(true);
     const formData = new FormData();
-    formData.append("post", selectedFile);
+    formData.append("cover", selectedFile);
     if (selectedFile !== null) {
-      await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postID}`,
+      const image = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`,
         {
           method: "POST",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+            // Authorization:
+            //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
             // "Content-type": "api/uploadfile",
           },
           body: formData,
         }
       );
+
+      const url = await image.json().then(setUploading(false));
+
+      setIndividualPost({ ...individualPost, image: url.url });
     }
 
-    setTimeout(function () {
-      window.location.reload();
-    }, 2000); // i hope 2 sec will be enoughh to finish upload hehe
-    // window.location.reload();
+    await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          // Authorization:
+          //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+        },
+        body: JSON.stringify(individualPost),
+      }
+    ).then(setShown(false));
+    // let data = await response.json();
+    // let postID = data._id;
   };
 
   const handleDelete = async () => {
     await fetch(
-      `https://striveschool-api.herokuapp.com/api/posts/${post._id}`,
+      `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
       {
         method: "DELETE",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
+          // Authorization:
+          //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
         },
       }
     );
@@ -92,7 +93,7 @@ const SinglePost = ({ post }) => {
         </p>
       </Row>
       <Row>
-        {post.image.startsWith("https://") && (
+        {post?.image?.startsWith("https://") && (
           <img src={post.image} alt="post" style={{ maxWidth: "40%" }} />
         )}
       </Row>
