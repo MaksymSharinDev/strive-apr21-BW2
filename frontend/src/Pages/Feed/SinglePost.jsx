@@ -20,33 +20,44 @@ const SinglePost = ({ post }) => {
     const formData = new FormData();
     formData.append("cover", selectedFile);
     if (selectedFile !== null) {
-      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) =>
-          setIndividualPost({ ...individualPost, image: data.url })
-        )
-        .then(setUploading(false));
-
-      // const url = await image
-      //   .json()
-      //   .then(setUploading(false))
-      //   .then(setIndividualPost({ ...individualPost, image: url.url }));
-
-      // console.log(individualPost);
+      const imageRaw = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const { url } = await imageRaw.json();
+      let updated = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ ...individualPost, image: url }),
+        }
+      );
+      const updatedPost = await updated.json();
+      setIndividualPost(updatedPost);
+      setUploading(false);
+      setShown(false);
+    } else {
+      let updated = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ individualPost }),
+        }
+      );
+      const updatedPost = await updated.json();
+      setIndividualPost(updatedPost);
+      setUploading(false);
+      setShown(false);
     }
-    await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(individualPost),
-      }
-    ).then(setShown(false));
   };
 
   const handleDelete = async () => {
@@ -73,22 +84,26 @@ const SinglePost = ({ post }) => {
         )}
       </div>
       <Row>
-        <h5>{post.username}</h5>
+        <h5>{individualPost.username}</h5>
       </Row>
       <Row>
-        <p>Created at post {post.createdAt}</p>
+        <p>Created at {individualPost.createdAt}</p>
       </Row>
       <Row>
-        <p>updatedAt {post.updatedAt}</p>
+        <p>updatedAt {individualPost.updatedAt}</p>
       </Row>
       <Row>
         <p style={{ maxHeight: "300px", overflow: "hidden" }}>
-          Text: {post.text}
+          Text: {individualPost.text}
         </p>
       </Row>
       <Row>
-        {post?.image?.startsWith("https://") && (
-          <img src={post.image} alt="post" style={{ maxWidth: "40%" }} />
+        {individualPost?.image?.startsWith("https://") && (
+          <img
+            src={individualPost.image}
+            alt="post"
+            style={{ maxWidth: "40%" }}
+          />
         )}
       </Row>
       {isShown && (
