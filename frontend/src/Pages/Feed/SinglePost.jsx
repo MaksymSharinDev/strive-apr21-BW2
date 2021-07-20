@@ -6,7 +6,6 @@ const SinglePost = ({ post }) => {
   const [isShown, setShown] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploading, setUploading] = useState(false);
-  const [fileUrl, setFileUrl] = useState(null);
 
   const handleChange = (e) => {
     let id = e.target.id;
@@ -21,38 +20,33 @@ const SinglePost = ({ post }) => {
     const formData = new FormData();
     formData.append("cover", selectedFile);
     if (selectedFile !== null) {
-      const image = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`,
-        {
-          method: "POST",
-          headers: {
-            // Authorization:
-            //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
-            // "Content-type": "api/uploadfile",
-          },
-          body: formData,
-        }
-      );
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) =>
+          setIndividualPost({ ...individualPost, image: data.url })
+        )
+        .then(setUploading(false));
 
-      const url = await image.json().then(setUploading(false));
+      // const url = await image
+      //   .json()
+      //   .then(setUploading(false))
+      //   .then(setIndividualPost({ ...individualPost, image: url.url }));
 
-      setIndividualPost({ ...individualPost, image: url.url });
+      // console.log(individualPost);
     }
-
     await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts/${post._id}`,
       {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
-          // Authorization:
-          //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
         },
         body: JSON.stringify(individualPost),
       }
     ).then(setShown(false));
-    // let data = await response.json();
-    // let postID = data._id;
   };
 
   const handleDelete = async () => {
