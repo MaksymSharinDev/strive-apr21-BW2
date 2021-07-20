@@ -1,10 +1,16 @@
 import { Card, Button, Form, Spinner } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PostEditor = () => {
   const [individualPost, setIndividualPost] = useState({});
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    setIndividualPost({ ...individualPost, username: "admin" });
+    console.log("component did mount");
+  }, []);
+
   const handleChange = (e) => {
     let id = e.target.id;
     setIndividualPost({ ...individualPost, [id]: e.target.value });
@@ -14,38 +20,54 @@ const PostEditor = () => {
   };
 
   const handleSubmit = async () => {
-    let response = await fetch(
-      `https://striveschool-api.herokuapp.com/api/posts/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
-        },
-        body: JSON.stringify(individualPost),
-      }
-    );
-    let data = await response.json();
-    let postID = data._id;
-
-    const formData = new FormData();
-    formData.append("post", selectedFile);
     setUploading(true);
+    const formData = new FormData();
+    formData.append("cover", selectedFile);
+    console.log(individualPost);
     if (selectedFile !== null) {
-      await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postID}`,
+      let imageRaw = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/image-upload`,
         {
           method: "POST",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MWRmYzI5MTkzMDAwMTU2MGFiOWEiLCJpYXQiOjE2MjM2NjIwNzcsImV4cCI6MTYyNDg3MTY3N30.S-4OzceDjWQt4-jFgqD0QsGS1neM4wsDD60vIc397hg",
-            // "Content-type": "api/uploadfile",
-          },
           body: formData,
         }
       );
+      const { url } = await imageRaw.json();
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ...individualPost,
+          image: url,
+        }),
+      });
+
+      setUploading(false);
+    } else {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/blogposts`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(individualPost),
+      });
+
+      setUploading(false);
     }
+    // let response = await fetch(
+    //   `https://striveschool-api.herokuapp.com/api/posts/`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(individualPost),
+    //   }
+    // );
+    // let data = await response.json();
+    // let postID = data._id;
 
     setTimeout(function () {
       window.location.reload();

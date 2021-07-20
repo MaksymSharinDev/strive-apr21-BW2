@@ -1,4 +1,4 @@
-import { Card, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
 
