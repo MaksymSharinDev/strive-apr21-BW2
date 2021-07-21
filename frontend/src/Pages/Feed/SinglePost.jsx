@@ -77,7 +77,7 @@ const SinglePost = ({ post }) => {
   return (
     <>
       <div>
-        {post?.user?._id === "5d84937322b7b54d848eb41b" && (
+        {post?.user?.username === "admin" && (
           <p className={styles.edit} onClick={() => setShown(true)}>
             EDIT
           </p>

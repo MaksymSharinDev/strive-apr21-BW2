@@ -5,10 +5,18 @@ const PostEditor = () => {
   const [individualPost, setIndividualPost] = useState({});
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploading, setUploading] = useState(false);
+  const [user, setUser] = useState({});
+  const [isShown, setShown] = useState(false);
 
   useEffect(() => {
-    setIndividualPost({ ...individualPost, username: "admin" });
-    console.log("component did mount");
+    const author = async () => {
+      const userRaw = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/profile/60f81c6ffa4d9aa8d36e6581`
+      );
+      const userData = await userRaw.json();
+      setUser(userData);
+    };
+    author();
   }, []);
 
   const handleChange = (e) => {
@@ -41,6 +49,8 @@ const PostEditor = () => {
         body: JSON.stringify({
           ...individualPost,
           image: url,
+          username: "admin",
+          user: user,
         }),
       });
 
@@ -51,7 +61,11 @@ const PostEditor = () => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(individualPost),
+        body: JSON.stringify({
+          ...individualPost,
+          username: "admin",
+          user: user,
+        }),
       });
 
       setUploading(false);
@@ -77,35 +91,76 @@ const PostEditor = () => {
   return (
     <Card>
       <Card.Body>
-        <div style={{ padding: "2rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h2>Add a post</h2>
-          </div>
-          <hr />
-
-          <p>Text</p>
-          <Form.Control
-            id="text"
-            as="input"
-            value={individualPost.text}
-            onChange={(e) => handleChange(e)}
-          />
-
-          <input type="file" onChange={(e) => fileChange(e)} />
-
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button variant="success" onClick={() => handleSubmit()}>
-              Save
-            </Button>
-            {isUploading && (
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            {user?.image && (
               <>
-                <div style={{ display: "flex" }}>
-                  <Spinner animation="border" role="status" />
-                  <h3>Uploading... </h3>
-                </div>
+                <img
+                  src={user.image}
+                  alt="avatar"
+                  style={{ maxWidth: "50px", borderRadius: "50px" }}
+                />
               </>
             )}
           </div>
+          <div
+            style={{
+              border: "1px solid black",
+              borderRadius: "50px",
+              display: "flex",
+              padding: "1rem 7rem",
+              backgroundColor: "grey",
+            }}
+            onClick={() => setShown(!isShown)}
+          >
+            <p style={{ alignSelf: "center", display: "block", margin: "0" }}>
+              Start a post
+            </p>
+          </div>
+        </div>
+        <div style={{ padding: "2rem" }}>
+          <div
+            style={{ display: "flex", justifyContent: "space-between" }}
+            onClick={() => setShown(!isShown)}
+          >
+            <div>
+              <p>Photo</p>
+            </div>
+            <div>
+              <p>Video</p>
+            </div>
+            <div>
+              <p>Event</p>
+            </div>
+            <div>
+              <p>Write article</p>
+            </div>
+          </div>
+          <hr />
+          {isShown && (
+            <>
+              <Form.Control
+                id="text"
+                as="input"
+                value={individualPost.text}
+                onChange={(e) => handleChange(e)}
+              />
+              <input type="file" onChange={(e) => fileChange(e)} />
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Button variant="success" onClick={() => handleSubmit()}>
+                  Save
+                </Button>
+                {isUploading && (
+                  <>
+                    <div style={{ display: "flex" }}>
+                      <Spinner animation="border" role="status" />
+                      <h3>Uploading... </h3>
+                    </div>
+                  </>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </Card.Body>
     </Card>
